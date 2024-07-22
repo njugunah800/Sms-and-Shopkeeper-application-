@@ -1,0 +1,69 @@
+class ShopkeeperApp:
+    def __init__(self):
+        self.items = []
+        self.buyers = []
+
+    def add_item(self):
+        name = input("Enter item name: ")
+        buying_price = float(input("Enter buying price: "))
+        selling_price = float(input("Enter selling price: "))
+        item = {
+            'name': name,
+            'buying_price': buying_price,
+            'selling_price': selling_price
+        }
+        self.items.append(item)
+        print("Item added successfully!")
+
+    def add_buyer(self):
+        name = input("Enter buyer's name: ")
+        contact = input("Enter buyer's contact details: ")
+        buyer = {
+            'name': name,
+            'contact': contact
+        }
+        self.buyers.append(buyer)
+        print("Buyer added successfully!")
+
+    def display_items(self):
+        if not self.items:
+            print("No items available.")
+        else:
+            print("Items:")
+            for item in self.items:
+                print(f"Name: {item['name']}, Buying Price: {item['buying_price']}, Selling Price: {item['selling_price']}")
+
+    def display_buyers(self):
+        if not self.buyers:
+            print("No buyers available.")
+        else:
+            print("Buyers:")
+            for buyer in self.buyers:
+                print(f"Name: {buyer['name']}, Contact: {buyer['contact']}")
+
+    def menu(self):
+        while True:
+            print("\n1. Add Item")
+            print("2. Add Buyer")
+            print("3. Display Items")
+            print("4. Display Buyers")
+            print("5. Exit")
+            choice = input("Enter your choice: ")
+
+            if choice == '1':
+                self.add_item()
+            elif choice == '2':
+                self.add_buyer()
+            elif choice == '3':
+                self.display_items()
+            elif choice == '4':
+                self.display_buyers()
+            elif choice == '5':
+                print("Exiting the application.")
+                break
+            else:
+                print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    app = ShopkeeperApp()
+    app.menu()
